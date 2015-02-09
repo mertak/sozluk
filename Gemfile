@@ -41,4 +41,6 @@ gem 'spring',        group: :development
 
 
 gem 'devise'
-gem 'bootstrap-sass', '~> 3.3.3'
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
