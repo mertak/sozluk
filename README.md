@@ -1,1 +1,2 @@
-# sozluk
+# Sözlük
+Bir *sözlük* denemesi
