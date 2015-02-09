@@ -18,13 +18,18 @@
         </div>
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="/writers/sign_in">Profile</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/writers/edit">Profile</a></li>
                 <li><a href="#">Messages</a></li>
 		<li class="passive"><a new_writer_registration_path>Pasif</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+	    <%if !current_writer%>
+                <li><a href="/writers/sign_up">Sign Up</a></li>
                 <li><a href="/writers/sign_in">Login</a></li>
+ 	    <% else %>
+		<li><%= link_to "Log Out", "/writers/sign_out",:method => :delete %></li>
+  	    <% end %>
             </ul>
         </div>
     </div>
