@@ -24,11 +24,13 @@
 		<li class="passive"><a new_writer_registration_path>Pasif</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-	    <%if !current_writer%>
+	    <%if !current_writer && !current_admin%>
                 <li><a href="/writers/sign_up">Sign Up</a></li>
                 <li><a href="/writers/sign_in">Login</a></li>
- 	    <% else %>
+ 	    <% elsif current_writer %>
 		<li><%= link_to "Log Out", "/writers/sign_out",:method => :delete %></li>
+            <%elsif current_admin %>
+              <li><%= link_to "Log out", destroy_admin_session_path,:method => :delete %></li>
   	    <% end %>
             </ul>
         </div>
