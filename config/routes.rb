@@ -2,15 +2,15 @@ Rails.application.routes.draw do
 
   #Session destroy etmek için get isteğini ezdik. Sanırım.
   devise_scope :writer do
-    get 'writers/sign_out', to: 'devise/sessions#destroy'
+    get 'writer/sign_out', to: 'devise/sessions#destroy'
   end
 
   devise_scope :admin do
-    get 'admins/sign_out', to: 'devise/sessions#destroy'
+    get 'admin/sign_out', to: 'devise/sessions#destroy'
   end
 
-  devise_for :admins
-  devise_for :writers
+  devise_for :admins, :path => '/admin'
+  devise_for :writers, :path => '/writer'
 
   root 'welcome#index'
 
