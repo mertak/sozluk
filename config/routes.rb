@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   devise_for :writers
 
   root 'welcome#index'
-  resources :posts
 
   namespace :admin do
     resources :dashboard, only: :index
@@ -22,4 +21,7 @@ Rails.application.routes.draw do
 
   end
 
+  namespace :writer do
+    resources :posts
+  end
 end
