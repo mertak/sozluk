@@ -1,5 +1,8 @@
 class Writer::PostsController < ApplicationController
 
+  def new
+  end
+
   def index
   end
 
