@@ -19,16 +19,16 @@
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
-                <li><a href="/writers/edit">Profile</a></li>
+                <li><a href="/writer/edit">Profile</a></li>
                 <li><a href="#">Messages</a></li>
 		<li class="passive"><a new_writer_registration_path>Pasif</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 	    <%if !current_writer && !current_admin%>
-                <li><a href="/writers/sign_up">Sign Up</a></li>
-                <li><a href="/writers/sign_in">Login</a></li>
+                <li><a href="/writer/sign_up">Sign Up</a></li>
+                <li><a href="/writer/sign_in">Login</a></li>
  	    <% elsif current_writer %>
-		<li><%= link_to "Log Out", "/writers/sign_out",:method => :delete %></li>
+		<li><%= link_to "Log Out", destroy_writer_session_path,:method => :delete %></li>
             <%elsif current_admin %>
               <li><%= link_to "Log out", destroy_admin_session_path,:method => :delete %></li>
   	    <% end %>
@@ -40,7 +40,12 @@
 </head> 
 
 <body> 
-<%= yield %>
+  <div  class="col-md-2">
+    Burası sol frame olsa mesela Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus semper porttitor dolor sed fringilla. Phasellus efficitur odio vitae ex auctor aliquet. Vestibulum nec lacus sem. Ut vestibulum augue sit amet nisl eleifend, id tincidunt urna iaculis. Sed viverra pretium leo, eu dapibus lectus congue id. Donec auctor semper sapien, nec lobortis lectus dapibus a. In vel neque vitae dolor commodo porta. Ut eget ante arcu. Donec cursus, velit vitae eleifend hendrerit, nisl metus imperdiet risus, eget accumsan arcu eros nec risus. Vestibulum venenatis bibendum neque, nec consequat odio interdum at. Donec id justo vitae urna maximus lacinia in eu ipsum.
+  </div>
+  <div class="col-md-10">
+    <%= yield %>
+  </div>
 </body>
 
 </html>

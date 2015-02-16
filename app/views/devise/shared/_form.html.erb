@@ -1,7 +1,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
+  <div class="form-horizontal">
     <%= f.label "E-posta" %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
