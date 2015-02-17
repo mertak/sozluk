@@ -1,1 +1,7 @@
 New Post
+
+<%= simple_form_for([:writer,@post], html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.input :title, label: "Başlık" %>
+  <%= f.input :content %>
+  <%= f.submit %>
+<% end %>
