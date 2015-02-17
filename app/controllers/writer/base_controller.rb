@@ -1,3 +1,3 @@
-class Writer::BaseController < ActionController::Base
+class Writer::BaseController < ApplicationController
   before_action :authenticate_writer!
 end

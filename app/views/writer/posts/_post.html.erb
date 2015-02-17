@@ -1,0 +1,11 @@
+<td>
+<%= link_to writer_post_path(post) ,class: "btn btn-info btn-xs", method: :get do   %>
+		      <i class="icon glyphicon glyphicon-eye-open"></i>
+<% end %>
+<%= link_to edit_writer_post_path(post), class: "btn btn-success btn-xs", method: :post do %>
+		      <i class="icon glyphicon glyphicon-edit"></i>
+<% end %>
+<%= link_to  writer_post_path(post), class: "btn btn-danger btn-xs", method: :delete, :data => { :confirm => 'Are you sure?' } do %>
+		      <i class="icon glyphicon glyphicon-trash"></i>
+<%end%>
+</td>

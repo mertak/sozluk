@@ -1,10 +1,26 @@
 <div class="page-header">
   <h1>Gönderileriniz <small>Tüm gönderiler</small></h1>
 </div>
-<ul class="list-group">
-  <li class="list-group-item">Postları</li>
-  <li class="list-group-item">Listelemek</li>
-  <li class="list-group-item">İçin</li>
-  <li class="list-group-item">Bir</li>
-  <li class="list-group-item">Yöntem</li>
-</ul>
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td>Başlık</td>
+			<td>Post</td>
+			<td>İşlem</td>
+		</tr>
+	</thead>	
+	<tbody>
+        <% @posts.each do |p| %>
+	<tr>
+		<td><%= link_to p.title, [:writer, p] %></td>
+		<td><%= p.content%></td>
+		<%= render @posts %>
+	</tr>
+	<% end %>
+	</tbody>
+</table>
+<table class="table table-bordered table-vertical">
+	<thead></thead>
+	<tbody>
+	</tbody>
+</table>
