@@ -1,5 +1,4 @@
 class Writer::PostsController < Writer::BaseController
-
   respond_to :html
 
   def new
@@ -43,7 +42,13 @@ class Writer::PostsController < Writer::BaseController
   end
 
   def destroy
-  	@post.destroy
+  	if current_writer != Post.find(params[:id]).writer
+    	respond_to do |format|
+    		format.html { redirect_to root_path, notice: "Bu postu silemezsin.! Defol.!" }
+    	end
+    else
+    	@post = Post.find(params[:id])    	
+    end
   end
 
   def set_pin
