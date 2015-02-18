@@ -33,10 +33,21 @@ class Writer::PostsController < Writer::BaseController
   end
 
   def edit
-    @post = Post.find(params[:id])
+  	if current_writer != Post.find(params[:id]).writer
+    	respond_to do |format|
+    		format.html { redirect_to root_path, notice: "Bu postu düzenleyemezsin.! Defol.!" }
+    	end
+    else
+    	@post = Post.find(params[:id])
+    end
   end
 
   def destroy
+  	@post.destroy
+  end
+
+  def set_pin
+    @pin = current_user.pins.find(params[:id])
   end
 
 private
