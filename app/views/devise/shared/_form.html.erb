@@ -2,6 +2,11 @@
   <%= devise_error_messages! %>
 
   <div class="form-horizontal">
+    <%= f.label "Görüntülenecek İsim" %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="form-horizontal">
     <%= f.label "E-posta" %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>

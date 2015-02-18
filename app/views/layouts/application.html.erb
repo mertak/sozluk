@@ -5,14 +5,16 @@
 <title>Sözlük</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <nav role="navigation" class="navbar navbar-default navbar-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
-	    		<a href="/" class="navbar-brand"><img alt="Brand" src="http://www.faviconer.com/uploads/296/61/favicon.png"></a>
+	    		<a href="/" class="navbar-brand"><img alt="Brand" src="https://www.drupal.org/files/issues/favicon_16_32_b.ico"></a>
         	</div>
 	        <div id="navbarCollapse" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="/">Home</a></li>
+				<p class="navbar-text">Sözlük Texti</p>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<%if !current_writer && !current_admin%>
@@ -23,7 +25,9 @@
 			  		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Hesap <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
       							<li><a href="/writer/edit">Ayarlar</a></li>
-        	        				<li><a href="#">Messages</a></li>
+        	        				<li><a href="/writer/posts">Gönderiler</a></li>
+        	        				<li><a href="#">Mesajlar</a></li>
+        	        				<li><a href="#">Bildirimler</a></li>
 							<li class="divider"></li>
 							<li><%= link_to "Cikis Yap", destroy_writer_session_path,:method => :delete %></li>
 						</ul>    
@@ -35,16 +39,15 @@
 		</div>
 	</div>
 </nav>                
-
 </head> 
 
 <body> 
   <div  class="col-md-2">
-	  <ul>
-		  <% Post.order('created_at DESC').all.each do |post| %>
-		  <li><%= link_to post.title, [:writer, post] %></li>
+	  <div class="list-group" >
+		  <% all_posts.each do |post| %>
+			  <a class="list-group-item" href="/writer/posts/<%= post.id %>"><%= post.title %> </a>
 		  <% end %>
-	  </ul>
+	  </div>
   </div>
   <div class="col-md-10">
     <%= yield %>
