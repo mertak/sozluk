@@ -33,12 +33,12 @@ class Writer::PostsController < Writer::BaseController
   end
 
   def edit
-  	if current_writer != Post.find(params[:id]).writer
-    	respond_to do |format|
-    		format.html { redirect_to root_path, notice: "Bu postu düzenleyemezsin.! Defol.!" }
-    	end
+    if current_writer != Post.find(params[:id]).writer
+      respond_to do |format|
+        format.html { redirect_to writer_posts_path, notice: "Bu postu duzenleyemezsin.! Defol.!" }
+      end
     else
-    	@post = Post.find(params[:id])
+      @post = Post.find(params[:id])
     end
   end
 

@@ -50,6 +50,7 @@
 	  </div>
   </div>
   <div class="col-md-10">
+    <%= render partial: "layouts/flash_messages", flash: flash %> 
     <%= yield %>
   </div>
 </body>
