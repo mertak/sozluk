@@ -3,12 +3,13 @@
 	<td><%= post.content%></td>
 	<td><%= post.writer.email %></td>
 	<td>
-<%= link_to edit_writer_post_path(post), class: "btn btn-info btn-sm" do %>
+	<%= link_to edit_writer_post_path(post), class: "btn btn-info btn-sm" do %>
 		      <i class="icon glyphicon glyphicon-edit"></i>
-<% end %>
-<%= link_to  writer_post_path(post), class: "btn btn-danger btn-sm", :method => :delete, :data => { :confirm => 'Are you sure?' } do %>
+	<% end %>
+	<%= link_to  writer_post_path(post), class: "btn btn-danger btn-sm", :method => :delete, :data => { :confirm => 'Are you sure?' } do %>
 		      <i class="icon glyphicon glyphicon-trash"></i>
-<%end%>
+	<%end%>
 
 	</td>
 </tr>
+

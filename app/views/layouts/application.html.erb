@@ -6,35 +6,34 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <nav role="navigation" class="navbar navbar-default navbar-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="#" class="navbar-brand">Brand</a>
-        </div>
-        <div id="navbarCollapse" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-                <li><a href="/writer/edit">Profile</a></li>
-                <li><a href="#">Messages</a></li>
-		<li class="passive"><a new_writer_registration_path>Pasif</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-	    <%if !current_writer && !current_admin%>
-                <li><a href="/writer/sign_up">Sign Up</a></li>
-                <li><a href="/writer/sign_in">Login</a></li>
- 	    <% elsif current_writer %>
-		<li><%= link_to "Log Out", destroy_writer_session_path,:method => :delete %></li>
-            <%elsif current_admin %>
-              <li><%= link_to "Log out", destroy_admin_session_path,:method => :delete %></li>
-  	    <% end %>
-            </ul>
-        </div>
-    </div>
+	<div class="container-fluid">
+		<div class="navbar-header">
+	    		<a href="/" class="navbar-brand"><img alt="Brand" src="http://www.faviconer.com/uploads/296/61/favicon.png"></a>
+        	</div>
+	        <div id="navbarCollapse" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="/">Home</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<%if !current_writer && !current_admin%>
+					<li><a href="/writer/sign_up">Sign Up</a></li>
+                			<li><a href="/writer/sign_in">Login</a></li>
+	 	    		<% elsif current_writer %>
+			  		<li class="dropdown">
+			  		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Hesap <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+      							<li><a href="/writer/edit">Ayarlar</a></li>
+        	        				<li><a href="#">Messages</a></li>
+							<li class="divider"></li>
+							<li><%= link_to "Cikis Yap", destroy_writer_session_path,:method => :delete %></li>
+						</ul>    
+					  </li>
+				<%elsif current_admin %>
+              				<li><%= link_to "Log out", destroy_admin_session_path,:method => :delete %></li>
+	  	   		 <% end %>
+        	    	</ul>
+		</div>
+	</div>
 </nav>                
 
 </head> 
@@ -42,8 +41,7 @@
 <body> 
   <div  class="col-md-2">
 	  <ul>
-		  <% Post.all.each do |post| %>
-		  <% Post.order('created_at DESC')%>
+		  <% Post.order('created_at DESC').all.each do |post| %>
 		  <li><%= link_to post.title, [:writer, post] %></li>
 		  <% end %>
 	  </ul>

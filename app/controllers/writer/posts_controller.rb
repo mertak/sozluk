@@ -1,5 +1,7 @@
 class Writer::PostsController < Writer::BaseController
 
+  respond_to :html
+
   def new
     @post = current_writer.posts.new
   end
@@ -7,6 +9,7 @@ class Writer::PostsController < Writer::BaseController
   def index
     @posts = Post.all
     @posts.order(id: :desc)
+    @cur_writers_post = Post.find(current_writer)
   end
 
   def show
@@ -23,7 +26,14 @@ class Writer::PostsController < Writer::BaseController
     end
   end
 
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    respond_with(:writer, @post)
+  end
+
   def edit
+    @post = Post.find(params[:id])
   end
 
   def destroy
