@@ -41,7 +41,12 @@
 
 <body> 
   <div  class="col-md-2">
-    Burası sol frame olsa mesela Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus semper porttitor dolor sed fringilla. Phasellus efficitur odio vitae ex auctor aliquet. Vestibulum nec lacus sem. Ut vestibulum augue sit amet nisl eleifend, id tincidunt urna iaculis. Sed viverra pretium leo, eu dapibus lectus congue id. Donec auctor semper sapien, nec lobortis lectus dapibus a. In vel neque vitae dolor commodo porta. Ut eget ante arcu. Donec cursus, velit vitae eleifend hendrerit, nisl metus imperdiet risus, eget accumsan arcu eros nec risus. Vestibulum venenatis bibendum neque, nec consequat odio interdum at. Donec id justo vitae urna maximus lacinia in eu ipsum.
+	  <ul>
+		  <% Post.all.each do |post| %>
+		  <% Post.order('created_at DESC')%>
+		  <li><%= link_to post.title, [:writer, post] %></li>
+		  <% end %>
+	  </ul>
   </div>
   <div class="col-md-10">
     <%= yield %>

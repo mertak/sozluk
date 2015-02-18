@@ -6,21 +6,11 @@
 		<tr>
 			<td>Başlık</td>
 			<td>Post</td>
+			<td>Yazan</td>
 			<td>İşlem</td>
 		</tr>
 	</thead>	
 	<tbody>
-        <% @posts.each do |p| %>
-	<tr>
-		<td><%= link_to p.title, [:writer, p] %></td>
-		<td><%= p.content%></td>
 		<%= render @posts %>
-	</tr>
-	<% end %>
-	</tbody>
-</table>
-<table class="table table-bordered table-vertical">
-	<thead></thead>
-	<tbody>
 	</tbody>
 </table>

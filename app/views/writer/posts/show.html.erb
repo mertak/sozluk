@@ -1,5 +1,6 @@
-<h3>Posts</h3>
+<h3><%=@post.title.upcase%></h3>
 
-
-<%= @post.title %>
 <%= @post.content %>
+<p>
+Posted by: <%= @post.writer.email %>
+</p>
