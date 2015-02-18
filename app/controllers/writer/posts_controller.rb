@@ -44,10 +44,12 @@ class Writer::PostsController < Writer::BaseController
   def destroy
   	if current_writer != Post.find(params[:id]).writer
     	respond_to do |format|
-    		format.html { redirect_to root_path, notice: "Bu postu silemezsin.! Defol.!" }
+    		format.html { redirect_to writer_posts_path, notice: "Bu postu silemezsin.! Defol.!" }
     	end
     else
     	@post = Post.find(params[:id])    	
+	@post.destroy
+	redirect_to(:back)
     end
   end
 
