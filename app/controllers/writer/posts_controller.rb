@@ -7,7 +7,7 @@ class Writer::PostsController < Writer::BaseController
 
   def index
     @posts = Post.order(id: :asc)
-    @cur_writers_post = @posts.find(1)
+    @cur_writers_post = @posts.find_by(id: 1)
   end
 
   def show
