@@ -7,7 +7,8 @@
 		      <i class="icon glyphicon glyphicon-edit"></i>
 	<% end %>
 	
-	<%= button_to writer_post_path(post), class: "btn btn-danger btn-sm", :method => :delete, remote: true, :data => { :confirm => 'Are you sure?' } do %>
+	<%= button_to writer_post_path(post), class: "btn btn-danger btn-sm", :method => :delete, 
+		remote: true, :data => { :confirm => 'Are you sure?' } do %>
 		      <i class="icon glyphicon glyphicon-trash"></i>
 	<%end%>
 

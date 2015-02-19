@@ -8,7 +8,7 @@ class Writer::PostsController < Writer::BaseController
   def index
     @posts = Post.order(id: :asc)
     #Bazı durumlarda farklı hatalar oldu. Daha iyi bir çözümü olmalı.
-    @cur_writers_post = Post.find_by(id: 1)
+    @cur_writers_post = @posts.find_by(id: 1)
   end
 
   def show
@@ -49,8 +49,8 @@ class Writer::PostsController < Writer::BaseController
     	format.html { redirect_to writer_posts_path, notice: "Bu postu silemezsin.! Defol.!" }
     	end
     else	
-	@post.destroy
-	redirect_to(:back)
+	  @post.destroy
+	  redirect_to(:back)
     end
   end
 
