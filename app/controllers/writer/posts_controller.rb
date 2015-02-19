@@ -7,7 +7,8 @@ class Writer::PostsController < Writer::BaseController
 
   def index
     @posts = Post.order(id: :asc)
-    @cur_writers_post = @posts.find(1)
+    #Bazı durumlarda farklı hatalar oldu. Daha iyi bir çözümü olmalı.
+    @cur_writers_post = @posts.find_by(id: 3)
   end
 
   def show
@@ -31,22 +32,23 @@ class Writer::PostsController < Writer::BaseController
   end
 
   def edit
-    if current_writer != Post.find(params[:id]).writer
+    @post = Post.find(params[:id])
+    if current_writer != @post.writer
       respond_to do |format|
         format.html { redirect_to writer_posts_path, notice: "Bu postu duzenleyemezsin.! Defol.!" }
       end
     else
-      @post = Post.find(params[:id])
+      @post
     end
   end
 
   def destroy
-  	if current_writer != Post.find(params[:id]).writer
-    	respond_to do |format|
-    		format.html { redirect_to writer_posts_path, notice: "Bu postu silemezsin.! Defol.!" }
+    @post = Post.find(params[:id])
+    if current_writer != @post.writer
+      respond_to do |format|
+    	format.html { redirect_to writer_posts_path, notice: "Bu postu silemezsin.! Defol.!" }
     	end
-    else
-    	@post = Post.find(params[:id])    	
+    else	
 	@post.destroy
 	redirect_to(:back)
     end
