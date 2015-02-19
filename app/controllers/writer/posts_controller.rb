@@ -7,12 +7,8 @@ class Writer::PostsController < Writer::BaseController
 
   def index
     @posts = Post.order(id: :asc)
-<<<<<<< HEAD
     #Bazı durumlarda farklı hatalar oldu. Daha iyi bir çözümü olmalı.
-    @cur_writers_post = @posts.find_by(id: 3)
-=======
-    @cur_writers_post = @posts.find_by(id: 1)
->>>>>>> 3ef218da8acb97955c85fd1307a4caf1396ec210
+    @cur_writers_post = Post.find_by(id: 1)
   end
 
   def show
