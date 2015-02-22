@@ -1,0 +1,7 @@
+<h2><%= @writer.email %></h2>
+
+<%= simple_form_for([:admin,@writer], html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.input :email, label: "E-Posta", placeholder: @writer.email %>
+  <%= f.input :name, label: "İsim", placeholder: @writer.name %>
+  <%= f.submit %>
+<% end %>

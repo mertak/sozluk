@@ -1,4 +1,4 @@
-<h5> Tablolar falan </h5>
+<h3> Admin Yönetim Paneli</h3>
 
 <div class="well well-sm">
 <table class="table">
@@ -9,8 +9,10 @@
         <%= sort_link(@searchw,"Yazar") %>
       </th>
       <th>
-        <%= sort_link(@searchp,"Gönderi") %>
+        <%= sort_link(@searchp,"İsim") %>
       </th>
     </tr>
   </thead>
+  <tbody>
+    <%= render @writers %>
 </div>

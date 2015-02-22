@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: :index
 #    root 'dashboard#index'
     resources :writers, except: [:create, :new]
-
+    root 'dashboard#index'
   end
 
   namespace :writer do

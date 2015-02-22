@@ -5,6 +5,7 @@ class Admin::DashboardController < ApplicationController
     @w = @searchw.result(distinct: true)
     @searchp = Post.ransack(params[:q])
     @p = @searchp.result(distinct: true)
+    @writers = Writer.order(id: :asc)
   end
 
 end
