@@ -40,6 +40,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'sprockets-rails', '~> 2.1.4'
 group :production do
   gem 'pg'
 end
