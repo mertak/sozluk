@@ -1,5 +1,6 @@
 <h1>Sözlük</h1>
 
+<% unless logged_in or admin_logged_in %>
 <h3>Merhaba, Ruby on Rails ile yazılmış bir sözlük denemesine bakmaktasınız.</h3>
 <div class="col-md-6">
 	Sözlükte yazı yazabilmek için sağ üst köşedeki ya da hemen aşağıdaki "Kaydol" butonlarını kullanabilirsiniz.
@@ -15,5 +16,6 @@
 	<a class="btn btn-info" href="/writer/sign_in">Giriş Yap &raquo;</a>
 	</p>
 </div>
+<% end %>
 <%= link_to 'Tüm Postları Görüntüle', writer_posts_path %> | 
 <%= link_to "Post Oluştur", new_writer_post_path %>

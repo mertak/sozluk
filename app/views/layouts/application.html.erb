@@ -18,8 +18,8 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<%if !current_writer && !current_admin%>
-					<li><a href="/writer/sign_up">Sign Up</a></li>
-                			<li><a href="/writer/sign_in">Login</a></li>
+					<li><a href="/writer/sign_up">Kaydol</a></li>
+                			<li><a href="/writer/sign_in">Giriş Yap</a></li>
 	 	    		<% elsif current_writer %>
 			  		<li class="dropdown">
 			  		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Hesap <span class="caret"></span></a>
@@ -33,7 +33,14 @@
 						</ul>    
 					  </li>
 				<%elsif current_admin %>
-              				<li><%= link_to "Log out", destroy_admin_session_path,:method => :delete %></li>
+			  		<li class="dropdown">
+			  		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Hesap <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+      							<li><a href="/admin/edit">Ayarlar</a></li>
+							<li class="divider"></li>
+							<li><%= link_to "Cikis Yap", destroy_writer_session_path,:method => :delete %></li>
+						</ul>    
+					  </li>
 	  	   		 <% end %>
         	    	</ul>
 		</div>
