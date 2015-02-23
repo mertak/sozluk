@@ -34,6 +34,6 @@
 
 <h3>Hesabımı İptal Edin</h3>
 
-<p>Olmadı mı? :( <%= button_to "Hesabı sil", registration_path(resource_name), data: { confirm: "Emin misiniz?" }, method: :delete %></p>
+<p>Olmadı mı? :( <%= button_to "Hesabı sil", registration_path(resource_name), :class => "btn btn-danger", data: { confirm: "Emin misiniz?" }, method: :delete %></p>
 
 <%= link_to "Geri", :back %>
