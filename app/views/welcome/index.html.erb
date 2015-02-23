@@ -17,5 +17,5 @@
 	</p>
 </div>
 <% end %>
-<%= link_to 'Tüm Postları Görüntüle', writer_posts_path %> | 
-<%= link_to "Post Oluştur", new_writer_post_path %>
+<%= link_to_if(!current_writer.nil?, 'Tüm Postları Görüntüle', writer_posts_path) %> | 
+<%= link_to_if(!current_writer.nil?, "Post Oluştur", new_writer_post_path) %>

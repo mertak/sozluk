@@ -46,3 +46,6 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'simple_form'
 gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.1'
+gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate-bootstrap'
+

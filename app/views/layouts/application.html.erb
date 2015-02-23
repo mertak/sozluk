@@ -34,7 +34,7 @@
 					  </li>
 				<%elsif current_admin %>
 					<ul class="nav navbar-nav">
-						<li><a href="/admin/dashboard">Dashboard</a></li>
+						<li><a href="/admin/dashboard">Yönetim Paneli</a></li>
 					</ul>
 			  		<li class="dropdown">
 			  		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Hesap <span class="caret"></span></a>
@@ -52,15 +52,19 @@
 </head> 
 
 <body> 
-  <div  class="col-md-2">
-	  <div class="list-group" >
-		  <% all_posts.each do |post| %>
-			  <a class="list-group-item" href="/writer/posts/<%= post.id %>"><%= post.title %> </a>
-		  <% end %>
-	  </div>
-  </div>
+	<div  class="col-md-2">
+		<%= link_to 'tarih','/#tarih',:class => "btn btn-default btn-xs"%>
+		<%= link_to 'oylar','/#oy',:class => "btn btn-default btn-xs" %>
+		<%= link_to 'hebe','/#hebe',:class => "btn btn-default btn-xs" %>
+		<%= link_to 'hebe','/#hübe',:class => "btn btn-default btn-xs" %>
+		<ul class="list-group">
+		<% posts_sorted_date .each do |post| %> 
+			<%= link_to  post.title, [:writer, post], :class => "list-group-item"%>
+		<% end%>
+		</ul>
+	</div>
   <div class="col-md-10">
-    <%= render partial: "layouts/flash_messages", flash: flash %> 
+    <%= render "layouts/flash_messages", flash: flash %> 
     <%= yield %>
   </div>
 </body>

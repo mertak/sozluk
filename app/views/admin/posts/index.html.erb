@@ -1,0 +1,23 @@
+<h2>Gönderiler Yönetim Paneli</h2>
+<%= search_form_for [:admin, @search] do |f| %>
+<div>     
+  <%= f.label "Başlık" %>
+  <%= f.search_field :title_cont %>
+  <%= f.label "İçerik" %>
+  <%= f.search_field :content_cont %>
+   
+  <%= f.submit 'Ara', class: 'btn btn-default' %>
+<% end %>
+</div>
+<table class="table table-bordered table-hover">
+  <thead>
+      <th>Başlık</th>
+      <th>İçerik</th>
+      <th>Yazar</th>
+      <th>Düzenle</th>
+      <th>Sil</th>
+  </thead>
+  <tbody>
+  <%= render @posts %>
+  </tbody>
+</table>

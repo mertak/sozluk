@@ -16,9 +16,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboard, only: :index
-#    root 'dashboard#index'
     resources :writers, except: [:create, :new]
+    resources :posts, except: [:create, :new]
     root 'dashboard#index'
+    get 'edit', to: 'admins#edit'
   end
 
   namespace :writer do

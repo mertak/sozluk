@@ -1,13 +1,13 @@
-class Writer::PostsController < Writer::BaseController
+class Admin::PostsController < Admin::BaseController
   respond_to :html
 
-  def new
-    @post = current_writer.posts.new
-  end
-
   def index
+    @search = Post.includes(:writer).ransack(params[:q])
+    @p = @search.result.paginate(page: params[:page])
+
     @posts = Post.order(id: :asc)
     @posts.to_json
+
     #Bazı durumlarda farklı hatalar oldu. Daha iyi bir çözümü olmalı.
     @cur_writers_post = @posts.find_by(id: 1)
   end

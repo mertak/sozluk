@@ -1,4 +1,4 @@
-class Admin::WritersController < ApplicationController
+class Admin::WritersController < Admin::BaseController
 
   respond_to :html
 
@@ -17,7 +17,7 @@ class Admin::WritersController < ApplicationController
     #TODO: Buraya bir hata sayfası koymalı
     if !@writer
       flash[:danger] = "Boyle bir yazar yok!"
-      respond_with(:admin, @writer)
+      redirect_to(:back)
     end
   end
 
@@ -28,6 +28,9 @@ class Admin::WritersController < ApplicationController
   end
 
   def destroy
+    @writer = Writer.find(params[:id])
+    @writer.destroy
+    redirect_to(:back)
   end
 
   private

@@ -1,12 +1,13 @@
 <tr>
 	<td><%= link_to post.title, [:writer, post] %></td>
 	<td><%= post.content%></td>
-	<td><%= post.writer.email %></td>
+	<td><%= mail_to post.writer.email %></td>
 	<td>
 	<%= link_to edit_writer_post_path(post), class: "btn btn-info btn-sm" do %>
 		      <i class="icon glyphicon glyphicon-edit"></i>
 	<% end %>
-	
+	</td>
+	<td>	
 	<%= button_to writer_post_path(post), class: "btn btn-danger btn-sm", :method => :delete, 
 		remote: true, :data => { :confirm => 'Are you sure?' } do %>
 		      <i class="icon glyphicon glyphicon-trash"></i>

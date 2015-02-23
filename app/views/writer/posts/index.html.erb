@@ -1,19 +1,16 @@
 <div class="page-header">
   <h1>Gönderileriniz <small>Tüm gönderiler</small></h1>
 </div>
-<table class="table table-bordered">
-	<thead>
-		<tr>
-			<td>Başlık</td>
-			<td>Post</td>
-			<td>Yazan</td>
-			<td>Düzenle</td>
-			<td>Sil</td>
-		</tr>
-	</thead>	
-	<tbody>
-		<%= render @posts %>
-	</tbody>
+<table class="table table-bordered table-hover">
+  <thead>
+      <th>Başlık</th>
+      <th>İçerik</th>
+      <th>Düzenle</th>
+      <th>Sil</th>
+  </thead>
+  <tbody>
+  <%= render @posts %>
+  </tbody>
 </table>
 <%= link_to 'Anasayfa', root_path %> | 
 <%= link_to "Post Oluştur", new_writer_post_path %>

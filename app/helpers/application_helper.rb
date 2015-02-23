@@ -1,7 +1,12 @@
 module ApplicationHelper
 
-  def all_posts
+  def posts_sorted_date
     Post.order('created_at DESC')
+  end
+
+
+  def posts_sorted_date!
+    Post.order('created_at ASC')
   end
 
   def bootstrap_class_for flash_type
