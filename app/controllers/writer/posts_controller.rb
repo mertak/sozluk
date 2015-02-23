@@ -7,6 +7,7 @@ class Writer::PostsController < Writer::BaseController
 
   def index
     @posts = Post.order(id: :asc)
+    @posts.to_json
     #Bazı durumlarda farklı hatalar oldu. Daha iyi bir çözümü olmalı.
     @cur_writers_post = @posts.find_by(id: 1)
   end
@@ -33,24 +34,24 @@ class Writer::PostsController < Writer::BaseController
 
   def edit
     @post = Post.find(params[:id])
-    if current_writer != @post.writer
+    if current_writer = @post.writer or current_admin
+      @post
+    else
       respond_to do |format|
         format.html { redirect_to writer_posts_path, notice: "Bu postu duzenleyemezsin.! Defol.!" }
       end
-    else
-      @post
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    if current_writer != @post.writer
+    if current_writer = @post.writer or current_admin
+      @post.destroy
+      redirect_to(:back)
+    else	
       respond_to do |format|
     	format.html { redirect_to writer_posts_path, notice: "Bu postu silemezsin.! Defol.!" }
     	end
-    else	
-	  @post.destroy
-	  redirect_to(:back)
     end
   end
 

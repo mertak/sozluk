@@ -7,7 +7,9 @@ class Admin::DashboardController < ApplicationController
     @p = @searchp.result(distinct: true)
 
     @writers = Writer.order(id: :asc)
+    @writers.to_json
     @posts = Post.order(id: :desc)
+    @posts.to_json
   end
 
 end

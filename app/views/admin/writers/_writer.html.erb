@@ -2,10 +2,11 @@
 	<td><%= link_to writer.email, [:admin, writer] %></td>
 	<td><%= writer.name%></td>
 	<td>
-	<%= link_to edit_admin_writer_path(writer), class: "btn btn-info btn-sm" do %>
+	<%= button_to edit_admin_writer_path(writer), class: "btn btn-info btn-sm" do %>
 		      <i class="icon glyphicon glyphicon-edit"></i>
 	<% end %>
-	
+	</td>
+	<td>	
 	<%= button_to admin_writer_path(writer), class: "btn btn-danger btn-sm", :method => :delete, 
 		remote: true, :data => { :confirm => 'Are you sure?' } do %>
 		      <i class="icon glyphicon glyphicon-trash"></i>
