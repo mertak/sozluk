@@ -1,10 +1,6 @@
 class Writer::PostsController < Writer::BaseController
   respond_to :html
 
-  def can?
-    current_writer = @post.writer or current_admin
-  end
-
   def new
     @post = current_writer.posts.new
   end
@@ -38,24 +34,24 @@ class Writer::PostsController < Writer::BaseController
 
   def edit
     @post = Post.find(params[:id])
-    if can?
-      @post
-    else
+    if current_writer = @post.writer
       respond_to do |format|
         format.html { redirect_to writer_posts_path, notice: "Bu postu duzenleyemezsin.! Defol.!" }
       end
+    else
+      @post
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
     if can?
-      @post.destroy
-      redirect_to(:back)
-    else	
       respond_to do |format|
     	format.html { redirect_to writer_posts_path, notice: "Bu postu silemezsin.! Defol.!" }
     	end
+    else	
+      @post.destroy
+      redirect_to(:back)
     end
   end
 

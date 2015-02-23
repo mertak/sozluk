@@ -14,7 +14,8 @@ module ApplicationHelper
         "alert-block"
       when :notice
         "alert-info"
-
+      when :danger
+	"alert-danger"
     else
     flash_type.to_s
     end

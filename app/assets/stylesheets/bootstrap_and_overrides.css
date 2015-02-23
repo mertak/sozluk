@@ -37,6 +37,5 @@
 @import "twitter/bootstrap/tables.less";
 @import "twitter/bootstrap/forms.less";
 @import "twitter/bootstrap/buttons.less";
-body {
-  padding-top: 60px;
-}
+
+
