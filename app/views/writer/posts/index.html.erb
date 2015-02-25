@@ -23,7 +23,8 @@
   </tbody>
 </table>
 
-<%= will_paginate @posts, renderer: BootstrapPagination::Rails, bootstrap: 3 %>
-
+<%= will_paginate @posts %>
+<p>
 <%= link_to 'Anasayfa', root_path %> | 
 <%= link_to "Post Oluştur", new_writer_post_path %>
+</p>

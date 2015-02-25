@@ -3,6 +3,10 @@ class Admin::WritersController < Admin::BaseController
   respond_to :html
 
   def index
+    @searchw = Writer.ransack(params[:q])
+    @writers = @searchw.result(distinct: true).paginate(:page => params[:page], :per_page => 5)
+    @searchp = Post.ransack(params[:q])
+    @posts = @searchp.result(distinct: true)
   end
 
   def show

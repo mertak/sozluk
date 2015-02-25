@@ -1,2 +1,38 @@
 <h2>Yazarlar</h2>
-Yazarlarla ilgili işlem yapmak için <a href="/admin">Yönetim Paneli</a>'ne gidin.
+
+<%= search_form_for [:admin, @searchw] do |f| %>
+
+	<%= f.label "İsim" %>
+        <%= f.search_field :name_cont %>
+
+	<%= f.label "E-posta" %>
+	<%= f.search_field :email_cont %>
+
+	<%= f.submit "Ara" %>
+<% end %>
+<div class="well well-sm">
+<table class="table">
+  <thead>
+    <tr>
+
+      <th>
+        <%= sort_link(@searchw,"Yazar") %>
+      </th>
+      <th>
+	İsim
+      </th>
+      <th>
+        Düzenle
+      </th>
+      <th>
+        Sil
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= render @writers %>
+  </tbody>
+</table>
+</div>
+<%= will_paginate @writers %>
+

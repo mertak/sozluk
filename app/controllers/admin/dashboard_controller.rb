@@ -1,15 +1,13 @@
 class Admin::DashboardController < Admin::BaseController
 
   def index
-    @searchw = Writer.ransack(params[:q])
-    @w = @searchw.result(distinct: true)
     @searchp = Post.ransack(params[:q])
-    @p = @searchp.result(distinct: true)
+    @posts = @searchp.result(distinct: true)
 
-    @writers = Writer.order(id: :asc)
-    @writers.to_json
-    @posts = Post.order(id: :desc)
-    @posts.to_json
+    @all_writers = Writer.order(id: :asc)
+    @all_writers.to_json
+    @all_posts = Post.order(id: :desc)
+    @all_posts.to_json
   end
 
 end

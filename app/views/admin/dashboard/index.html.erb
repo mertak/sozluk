@@ -1,28 +1,6 @@
 <h3> Admin Yönetim Paneli</h3>
 
-<div class="well well-sm">
-<table class="table">
-  <thead>
-    <tr>
+<li>Yazarlarla ilgili işlem yapmak için <a href="/admin/writers">Yazar Paneli</a>'ne gidin.
+</li>
+<li>Gönderilerle ilgili işlem yapmak için <a href="/admin/posts">Gönderiler Paneli</a>'ne gidin.</li>
 
-      <th>
-        <%= sort_link(@searchw,"Yazar") %>
-      </th>
-      <th>
-        <%= sort_link(@searchp,"İsim") %>
-      </th>
-      <th>
-        Düzenle
-      </th>
-      <th>
-        Sil
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-  <%= render @writers %>
-  </tbody>
-</div>
-
-<!--<h3> Gönderiler </h3>-->
-<!--<%=render @posts %>-->
