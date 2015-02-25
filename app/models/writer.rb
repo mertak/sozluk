@@ -3,5 +3,5 @@ class Writer < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :posts, :dependent => :destroy
-
+  validates :email, format: /@/
 end

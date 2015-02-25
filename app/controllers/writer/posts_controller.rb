@@ -6,8 +6,11 @@ class Writer::PostsController < Writer::BaseController
   end
 
   def index
-    @posts = Post.order(id: :asc)
-    @posts.to_json
+    @search = Post.includes(:writer).ransack(params[:q])
+    @posts = @search.result.paginate(page: params[:page])
+
+    @all_posts = Post.order(id: :asc)
+    @all_posts.to_json
     #Bazı durumlarda farklı hatalar oldu. Daha iyi bir çözümü olmalı.
     @cur_writers_post = @posts.find_by(id: 1)
   end
@@ -34,9 +37,7 @@ class Writer::PostsController < Writer::BaseController
 
   def edit
     @post = Post.find(params[:id])
-    if current_writer == @post.writer
-      @post
-    elsif !current_admin.nil?
+    if current_writer == @post.writer or !current_admin.nil?
       @post
     else
       respond_to do |format|
