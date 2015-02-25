@@ -17,5 +17,17 @@
 	</p>
 </div>
 <% end %>
+
+<h3><%=random_post%></h3>
+
+<ul class="list-group">
+  <li class="list-group-item"><%= @post.content %></li>
+  <li class="list-group-item">Posted by: <%= @post.writer.email %></li>
+  <li class="list-group-item">Posted at: <%= @post.created_at %></li>
+  <li class="list-group-item list-group-item-info">Last Edit: <%= @post.updated_at %></li>
+</ul>
+
+
 <%= link_to_if(!current_writer.nil?, 'Tüm Postları Görüntüle', writer_posts_path) %> | 
 <%= link_to_if(!current_writer.nil?, "Post Oluştur", new_writer_post_path) %>
+

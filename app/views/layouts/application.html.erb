@@ -58,8 +58,8 @@
 		<%= link_to 'hebe','/#hebe',:class => "btn btn-default btn-xs" %>
 		<%= link_to 'hebe','/#hübe',:class => "btn btn-default btn-xs" %>
 		<ul class="list-group">
-		<% posts_sorted_date .each do |post| %> 
-			<%= link_to  post.title, [:writer, post], :class => "list-group-item"%>
+		<% posts_sorted_date.each do |post| %> 
+			<%= link_to post.title, [:writer, post], :class => "list-group-item"%>
 		<% end%>
 		</ul>
 	</div>
