@@ -1,0 +1,5 @@
+tr:
+  will_paginate:
+    previous_label: "&#8592; Önceki"
+    next_label: "Sonraki &#8594;"
+    page_gap: "&hellip;"
