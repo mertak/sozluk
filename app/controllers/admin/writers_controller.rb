@@ -3,10 +3,9 @@ class Admin::WritersController < Admin::BaseController
   respond_to :html
 
   def index
-    @searchw = Writer.ransack(params[:q])
-    @writers = @searchw.result(distinct: true).paginate(:page => params[:page], :per_page => 5)
-    @searchp = Post.ransack(params[:q])
-    @posts = @searchp.result(distinct: true)
+    @search = Writer.ransack(params[:q])
+    @search.sorts = ['email asc', 'created_at desc'] if @search.sorts.empty?
+    @writers = @search.result(distinct: true).paginate(:page => params[:page], :per_page => 5)
   end
 
   def show
@@ -28,7 +27,7 @@ class Admin::WritersController < Admin::BaseController
   def update
     @writer = Writer.find(params[:id])
     @writer.update(writer_params)
-    respond_with(:admin, @writer)
+    redirect_to admin_writers_url
   end
 
   def destroy
