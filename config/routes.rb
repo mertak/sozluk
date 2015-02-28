@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   namespace :writer do
-    resources :posts
     resources :comments, :path => '/posts/comments'
+    resources :posts
   end
 end

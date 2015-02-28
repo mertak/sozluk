@@ -7,6 +7,7 @@ class Writer::PostsController < Writer::BaseController
 
   def index
     @search = Post.includes(:writer).ransack(params[:q])
+    @search.sorts = 'created_at desc' if @search.sorts.empty?
     @posts = @search.result.paginate(page: params[:page], :per_page => 7)
 
     @all_posts = Post.order(id: :asc)
