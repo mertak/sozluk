@@ -1,4 +1,9 @@
-class Post::CommentsController < Writer::BaseController
+class Writer::CommentsController < Writer::BaseController
+
+  def index
+    @comment = current_writer.comments.new
+    @comments = Comments.all
+  end
 
   def new
   end

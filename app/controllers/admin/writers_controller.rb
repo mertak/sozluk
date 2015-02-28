@@ -5,7 +5,7 @@ class Admin::WritersController < Admin::BaseController
   def index
     @search = Writer.ransack(params[:q])
     @search.sorts = ['email asc', 'created_at desc'] if @search.sorts.empty?
-    @writers = @search.result(distinct: true).paginate(:page => params[:page], :per_page => 5)
+    @writers = @search.result(distinct: true).paginate(:page => params[:page], :per_page => 8)
   end
 
   def show

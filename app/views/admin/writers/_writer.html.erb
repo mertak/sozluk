@@ -1,6 +1,6 @@
 <tr>
 	<td><%= mail_to writer.email %></td>
-	<td><%= writer.name%></td>
+	<td><%=link_to writer.name, admin_writer_path(writer)%></td>
 	<td>
 	<%= link_to edit_admin_writer_path(writer), class: "btn btn-info btn-sm" do %>
 		      <i class="icon glyphicon glyphicon-edit"></i>
