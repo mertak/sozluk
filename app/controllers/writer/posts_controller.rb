@@ -7,7 +7,7 @@ class Writer::PostsController < Writer::BaseController
 
   def index
     @search = Post.includes(:writer).ransack(params[:q])
-    @posts = @search.result.paginate(page: params[:page], :per_page => 3)
+    @posts = @search.result.paginate(page: params[:page], :per_page => 7)
 
     @all_posts = Post.order(id: :asc)
     @all_posts.to_json
@@ -24,7 +24,7 @@ class Writer::PostsController < Writer::BaseController
     if @post.save
       redirect_to action: :index
     else
-      flash.now[:danger] = "Gonderilemedi"
+      flash[:error] = "Gonderilemedi"
       render 'new'
     end
   end

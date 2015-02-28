@@ -1,7 +1,25 @@
-<h1>Sözlük</h1>
+<%if logged_in%>
+	<%= search_form_for [:writer, @search] do |f| %>
+	<div>     
+	  <%= f.label "Başlık" %>
+	  <%= f.search_field :title_cont, placeholder: 'Başlık ara...' %>
+   
+	  <%= f.submit 'Ara', class: 'btn btn-default' %>
+	<% end %>
+<% end %>
+
+<h1><%=random_post%></h1>
+
+<ul class="list-group">
+  <li class="list-group-item"><%= @post.content %></li>
+  <li class="list-group-item">Yazan: <%= @post.writer.name %></li>
+  <li class="list-group-item">Gönderim Tarihi: <%= @post.created_at %></li>
+  <% unless @post.created_at == @post.updated_at %>
+    <li class="list-group-item list-group-item-info">Son Düzenleme: <%= @post.updated_at %></li>
+  <% end %>
+</ul>
 
 <% unless logged_in or admin_logged_in %>
-<h3>Merhaba, Ruby on Rails ile yazılmış bir sözlük denemesine bakmaktasınız.</h3>
 <div class="col-md-6">
 	Sözlükte yazı yazabilmek için sağ üst köşedeki ya da hemen aşağıdaki "Kaydol" butonlarını kullanabilirsiniz.
 	<p>
@@ -17,16 +35,6 @@
 	</p>
 </div>
 <% end %>
-
-<h3><%=random_post%></h3>
-
-<ul class="list-group">
-  <li class="list-group-item"><%= @post.content %></li>
-  <li class="list-group-item">Posted by: <%= @post.writer.email %></li>
-  <li class="list-group-item">Posted at: <%= @post.created_at %></li>
-  <li class="list-group-item list-group-item-info">Last Edit: <%= @post.updated_at %></li>
-</ul>
-
 
 <%= link_to_if(!current_writer.nil?, 'Tüm Postları Görüntüle', writer_posts_path) %> | 
 <%= link_to_if(!current_writer.nil?, "Post Oluştur", new_writer_post_path) %>

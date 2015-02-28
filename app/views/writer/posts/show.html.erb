@@ -1,8 +1,10 @@
-<h3><%=@post.title.upcase%></h3>
+<h1><%=@post.title.upcase%></h1>
 
 <ul class="list-group">
   <li class="list-group-item"><%= @post.content %></li>
-  <li class="list-group-item">Posted by: <%= @post.writer.email %></li>
-  <li class="list-group-item">Posted at: <%= @post.created_at %></li>
-  <li class="list-group-item list-group-item-info">Last Edit: <%= @post.updated_at %></li>
+  <li class="list-group-item">Yazan: <%= @post.writer.name %></li>
+  <li class="list-group-item">Gönderim Tarihi: <%= @post.created_at %></li>
+  <%unless @post.created_at == @post.updated_at %>
+	  <li class="list-group-item list-group-item-info">Son Düzenleme: <%= @post.updated_at %></li>
+  <% end %>
 </ul>

@@ -19,7 +19,7 @@ class Admin::WritersController < Admin::BaseController
     @writer = Writer.find(params[:id])
     #TODO: Buraya bir hata sayfası koymalı
     if !@writer
-      flash[:danger] = "Boyle bir yazar yok!"
+      flash[:warning] = "Boyle bir yazar yok!"
       redirect_to(:back)
     end
   end

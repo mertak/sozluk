@@ -22,7 +22,7 @@ class Admin::PostsController < Admin::BaseController
     if @post.save
       redirect_to action: :index
     else
-      flash.now[:danger] = "Gonderilemedi"
+      flash.now[:error] = "Gonderilemedi"
       render 'new'
     end
   end
